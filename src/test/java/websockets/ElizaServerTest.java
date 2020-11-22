@@ -61,7 +61,7 @@ public class ElizaServerTest {
 		List<String> list = new ArrayList<>();
 		ClientEndpointConfig configuration = ClientEndpointConfig.Builder.create().build();
 		ClientManager client = ClientManager.createClient();
-		client.connectToServer(new ElizaEndpointToComplete(list), configuration, new URI("ws://localhost:8025/websockets/eliza"));
+		Session session = client.connectToServer(new ElizaEndpointToComplete(list), configuration, new URI("ws://localhost:8025/websockets/eliza"));
 
 		session.getAsyncRemote().sendText("Who's in");		//It doesn't matter how we start, it just needs a messagge
 		Thread.sleep(50);									//Wait for the response
